@@ -42,3 +42,5 @@ xgboost-cpu==3.4.1
 google-generativeai==0.8.6
 plotly==7.1.0
 scikit-learn==1.9.1
+matplotlib==3.11.2
+shap==0.54.1
