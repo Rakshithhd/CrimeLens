@@ -620,8 +620,16 @@ st.markdown(
 st.success("Model and historical data loaded successfully.")
 
 
-tab_overview, tab_forecast, tab_history, tab_performance, tab_methodology = st.tabs(
-    ["Overview", "Forecast", "Historical Trends", "Model Performance", "Methodology"]
+tab_overview, tab_forecast, tab_history, tab_performance, tab_hotspots, tab_xai, tab_methodology = st.tabs(
+    [
+        "Overview",
+        "Forecast",
+        "Historical Trends",
+        "Model Performance",
+        "Crime Hotspots",
+        "SHAP Explainability",
+        "Methodology"
+    ]
 )
 
 
@@ -1561,3 +1569,24 @@ with tab_methodology:
         - `xgb_model_metadata.pkl`
         """
     )
+
+
+# ============================================================
+# ADDITIONAL TAB: CRIME HOTSPOT ANALYSIS
+# ============================================================
+
+from src.dashboard_extensions import render_hotspot_tab, render_xai_tab
+
+render_hotspot_tab(tab_hotspots)
+
+
+# ============================================================
+# ADDITIONAL TAB: SHAP EXPLAINABILITY
+# ============================================================
+
+render_xai_tab(
+    tab_xai,
+    model,
+    historical_data,
+    metadata
+)
